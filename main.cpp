@@ -111,10 +111,24 @@ void loop(list &d){
         node *p = d.first->next;
         d.first->next = NULL;
         d.last->next = d.first;
+        d.last = d.first;
         d.first = p;
     }
 
+    /*
+    // tạo biến tạm lưu lại first element hiện tại
+node *p = d.first;
+// chuyển first element sang vị trí của d.second
+d.first = p->next;
+// trỏ new last element vào phía sau old last element
+// thằng new last element chính là p hay old d.first.
+d.last->next = p;
+// nội dung của new last element
+d.last = p;
+// gán *next = null để xác nhận nó là thằng cuối cùng
+d.last->next = NULL;
 
+*/
 }
 int main()
 {
@@ -137,10 +151,12 @@ cout<<"sau khi xoa dau";  Xem(d);
 loop(d); cout<<"loop 1 lan :";	Xem(d);
 loop(d); cout<<"loop 2 lan :";	Xem(d);
 
+XoaDau(d);
+loop(d); cout<<"xoa first, loop :";	Xem(d);
+XoaCuoi(d);
+loop(d); cout<<"xoa last, loop :";	Xem(d);
 
-
-
-
+loop(d); Xem(d);
 
 	return 0;
 }
